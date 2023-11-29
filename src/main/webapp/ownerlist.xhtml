@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<ui:composition template="layout.xhtml">
+    <ui:define name="content">
+        <h:form id="ownnerForm">
+            <p:panel header="Owner Info" id="ownerInfoPnl">
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="name" value="Owner Name: "/>
+                    <p:inputText id="name" size="40"
+                                 value="#{ownerController.ownerUiTO.ownerName}" required="true"
+                                 requiredMessage="Please enter owner name "/>
+                    <p:outputLabel for="owneremail" value="E-Mail : "/>
+                    <p:inputText id="owneremail"
+                                 value="#{ownerController.ownerUiTO.emailId}" size="40"
+                                 required="true" label="Email Address">
+
+                        <f:validator validatorId="customEmailValidator"/>
+                    </p:inputText>
+                    <p:outputLabel for="owneraddres" value="Address "/>
+                    <p:inputTextarea id="owneraddres" rows="4" cols="50"
+                                     value="#{ownerController.ownerUiTO.address1}"/>
+                    <p:outputLabel for="ownercar" value="Car "/>
+
+                    <p:selectOneMenu id="ownercar"
+                                     value="#{ownerController.ownerUiTO.carUITO}"
+                                     style="width:150px" converter="#{carConverter}">
+                        <f:selectItems value="#{ownerController.carUiToList}"
+                                       var="carUITO" itemLabel="#{carUITO.carColour}"
+                                       itemValue="#{carUITO}"/>
+
+                    </p:selectOneMenu>
+                    <p:commandButton value="#{ownerController.actionLabel}"
+                                     action="#{ownerController.doSaveInfoOwner}" update="ownerlist ownerInfoPnl">
+                    </p:commandButton>
+                    <ui:remove>
+                        <h:commandButton value="#{ownerController.actionLabel}"
+                                         action="#{ownerController.doSaveInfoOwner}">
+                            <f:ajax execute="ownerForm" render="ownerlist ownerInfoPnl"/>
+                        </h:commandButton>
+                    </ui:remove>
+                </h:panelGrid>
+            </p:panel>
+            <p:panel header="Owner List" id="ownerlist">
+                <p:dataTable id="table" var="owner"
+                             value="#{ownerController.ownerUiToList}">
+                    <p:column>
+                        <f:facet name="header"># Emp Id</f:facet>
+                        <h:outputText value="#{owner.ownerId}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Name</f:facet>
+                        <h:outputText value="#{owner.ownerName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Address </f:facet>
+                        <h:outputText value="#{emp.address1}">
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Email </f:facet>
+                        <h:outputText value="#{emp.emailId}">
+                        </h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Department </f:facet>
+                        <h:outputText value="#{owner.carUITO.carColour}"/>
+                    </p:column>
+                    <p:column id="action">
+                        <f:facet name="header">Action</f:facet>
+                        <h:commandLink value="Edit"
+                                       action="#{ownerController.editOwner(owner)}">
+                            <f:ajax execute="action" render="ownerForm"/>
+                        </h:commandLink> /
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <h:commandLink value="Delete"
+                                           action="#{ownerController.deleteOwner(owner)}">
+                                <f:ajax execute="action" render="table"/>
+                            </h:commandLink>
+                        </sec:authorize>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
