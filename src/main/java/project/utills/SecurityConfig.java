@@ -11,7 +11,7 @@ public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
 //		http.authorizeRequests().antMatchers("/javax.faces.resource/**").permitAll().anyRequest().authenticated();
 //		//
 //		// // Login Pages
-//		http.formLogin().loginPage("/login.jsf").permitAll().defaultSuccessUrl("/employeelist.jsf")
+//		http.formLogin().loginPage("/login.jsf").permitAll().defaultSuccessUrl("/ownerlist.jsf")
 //				.failureForwardUrl("/login.jsf?error=true");
 //		//
 //		// // logout

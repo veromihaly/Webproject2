@@ -18,7 +18,7 @@
                                  requiredMessage="Please enter owner name "/>
                     <p:outputLabel for="ownerpassword" value="Password: "/>
                     <p:password id="ownerpassword" size="40"
-                                value="#{emplController.empUiTO.password}"/>
+                                value="#{ownerController.ownerUiTO.password}"/>
                     <p:outputLabel for="owneremail" value="E-Mail : "/>
                     <p:inputText id="owneremail"
                                  value="#{ownerController.ownerUiTO.emailId}" size="40"
@@ -63,12 +63,12 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">Address </f:facet>
-                        <h:outputText value="#{emp.address1}">
+                        <h:outputText value="#{owner.address1}">
                         </h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Email </f:facet>
-                        <h:outputText value="#{emp.emailId}">
+                        <h:outputText value="#{owner.emailId}">
                         </h:outputText>
                     </p:column>
                     <p:column>

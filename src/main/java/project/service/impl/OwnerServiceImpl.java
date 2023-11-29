@@ -1,9 +1,6 @@
 package project.service.impl;
 
 /**
- *
- */
-/**
  * @author s727953
  *
  */
