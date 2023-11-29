@@ -7,6 +7,7 @@ import project.entity.CarDTO;
 @Repository
 public interface CarRepo extends JpaRepository<CarDTO, Long> {
 
-    CarDTO findTitleByCarColour(String carColour);
+    CarDTO findTitleByCarBrand(String carBrand);
 
+    //CarDTO findByCarBrandContainsAndCarIdExistsAndOrderByCarBrand()
 }

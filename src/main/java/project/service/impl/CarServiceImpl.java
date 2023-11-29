@@ -1,9 +1,6 @@
 package project.service.impl;
 
 /**
- *
- */
-/**
  * @author s727953
  *
  */
@@ -44,8 +41,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarUITO getCar(CarUITO carUITO) {
-        System.out.println(">>>>> "+carUITO.getCarColour());
-        CarDTO dto = carRepo.findTitleByCarColour(carUITO.getCarColour());
+        System.out.println(">>>>> "+carUITO.getCarBrand());
+        CarDTO dto = carRepo.findTitleByCarBrand(carUITO.getCarBrand());
         CarUITO uito = new CarUITO();
 
         BeanUtils.copyProperties(dto, uito);

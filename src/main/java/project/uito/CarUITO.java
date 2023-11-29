@@ -10,7 +10,7 @@ public class CarUITO implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     private Long carId;
-    private String carColour;
+    private String carBrand;
 
     private List<OwnerUITO> ownerUITOLst;
 
@@ -22,12 +22,12 @@ public class CarUITO implements Serializable {
         this.carId = carId;
     }
 
-    public String getCarColour() {
-        return carColour;
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public void setCarColour(String carColour) {
-        this.carColour = carColour;
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
     }
 
     public List<OwnerUITO> getOwnerUITOLst() {

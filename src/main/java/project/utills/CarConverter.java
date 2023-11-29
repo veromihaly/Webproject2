@@ -24,7 +24,7 @@ public class CarConverter implements Converter {
         LOG.info("getAsObject: " + carService);
 
         CarUITO carUITO = new CarUITO();
-        carUITO.setCarColour(string);
+        carUITO.setCarBrand(string);
         carUITO = carService.getCar(carUITO);
         System.out.println(carUITO.toString());
         return carUITO;
@@ -35,8 +35,8 @@ public class CarConverter implements Converter {
         LOG.info("getAsString obj class: " + obj.getClass().getName());
         if (obj instanceof CarUITO) {
             CarUITO dept = (CarUITO) obj;
-            LOG.info("getAsString def name: " + dept.getCarColour());
-            return dept.getCarColour();
+            LOG.info("getAsString def name: " + dept.getCarBrand());
+            return dept.getCarBrand();
         } else {
             StringBuilder sbError = new StringBuilder("The object of class ");
             sbError.append(obj.getClass().getName()).append(" is not of CarUITO");

@@ -14,6 +14,8 @@ public class OwnerUITO implements Serializable {
     private static final long serialVersionUID = 4840260415183676656L;
     private Long ownerId;
     private String ownerName;
+
+    private String password;
     private String address1;
     private String emailId;
     private CarUITO carUITO;
@@ -32,6 +34,14 @@ public class OwnerUITO implements Serializable {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAddress1() {
@@ -60,7 +70,7 @@ public class OwnerUITO implements Serializable {
 
     @Override
     public String toString() {
-        return "OwnerUITO [ownerId=" + ownerId + ", ownerName=" + ownerName + ", address1="
+        return "OwnerUITO [ownerId=" + ownerId + ", ownerName=" + ownerName + ", password=" + password + ", address1="
                 + address1 + ", emailId=" + emailId + ", carUITO=" + carUITO + "]";
     }
 

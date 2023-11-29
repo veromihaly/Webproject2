@@ -16,6 +16,9 @@
                     <p:inputText id="name" size="40"
                                  value="#{ownerController.ownerUiTO.ownerName}" required="true"
                                  requiredMessage="Please enter owner name "/>
+                    <p:outputLabel for="ownerpassword" value="Password: "/>
+                    <p:password id="ownerpassword" size="40"
+                                value="#{emplController.empUiTO.password}"/>
                     <p:outputLabel for="owneremail" value="E-Mail : "/>
                     <p:inputText id="owneremail"
                                  value="#{ownerController.ownerUiTO.emailId}" size="40"
@@ -32,7 +35,7 @@
                                      value="#{ownerController.ownerUiTO.carUITO}"
                                      style="width:150px" converter="#{carConverter}">
                         <f:selectItems value="#{ownerController.carUiToList}"
-                                       var="carUITO" itemLabel="#{carUITO.carColour}"
+                                       var="carUITO" itemLabel="#{carUITO.carBrand}"
                                        itemValue="#{carUITO}"/>
 
                     </p:selectOneMenu>
@@ -51,7 +54,7 @@
                 <p:dataTable id="table" var="owner"
                              value="#{ownerController.ownerUiToList}">
                     <p:column>
-                        <f:facet name="header"># Emp Id</f:facet>
+                        <f:facet name="header"># Owner Id</f:facet>
                         <h:outputText value="#{owner.ownerId}"/>
                     </p:column>
                     <p:column>
@@ -69,8 +72,8 @@
                         </h:outputText>
                     </p:column>
                     <p:column>
-                        <f:facet name="header">Department </f:facet>
-                        <h:outputText value="#{owner.carUITO.carColour}"/>
+                        <f:facet name="header">Car Brand </f:facet>
+                        <h:outputText value="#{owner.carUITO.carBrand}"/>
                     </p:column>
                     <p:column id="action">
                         <f:facet name="header">Action</f:facet>

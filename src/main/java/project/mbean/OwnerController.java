@@ -50,6 +50,8 @@ public class OwnerController {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Owner Details", "Owner Details added/Updated Successfully.");
 
         PrimeFaces.current().dialog().showMessageDynamic(message);
+        //RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO,
+        //		"Owner Details", "Owner Details added/Updated Successfully."));
 
     }
 

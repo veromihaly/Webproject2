@@ -23,8 +23,8 @@ public class CarDTO implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CAR_ID")
     private Long carId;
-    @Column(name = "Car_Colour")
-    private String carColour;
+    @Column(name = "Car_Brand")
+    private String carBrand;
 
     @OneToMany(mappedBy = "carDTO")
     private List<OwnerDTO> ownerdtolst;
@@ -38,11 +38,11 @@ public class CarDTO implements Serializable {
     }
 
     public String getCarBrand() {
-        return carColour;
+        return carBrand;
     }
 
     public void setCarBrand(String carBrand) {
-        this.carColour = carBrand;
+        this.carBrand = carBrand;
     }
 
     public List<OwnerDTO> getOwnerdtolst() {
